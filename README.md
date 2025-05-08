@@ -10,41 +10,41 @@ Both interfaces and types allow you to define custom shapes for objects, but the
 
 # Interface: Uses the "interface" keyword.
 
-        ```interface Person {
+        interface Person {
         name: string;
         age: number;
-        }```
+        }
 
 # Type: Uses the "type" keyword.
 
-          ```type Person = {
+          type Person = {
           name: string;
           age: number;
-            };```
+            };
 
 2. Extending and Combining
 
 # Interface: Can be extended using extends.
 
-        ```interface Employee extends Person {
+        interface Employee extends Person {
         jobTitle: string;
-        }```
+        }
 
 # Type: Uses intersection (&) to combine types.
 
-        ```type Employee = Person & {
+        type Employee = Person & {
         jobTitle: string;
-        };```
+        };
 
 3. Adding New Fields (Declaration Merging)
 
 # Interface: Can be re-opened to add new properties.
 
-      ```interface Person { gender: string; }```
+      interface Person { gender: string; }
 
 # Type: Cannot be re-opened after creation.
 
-      ```type Person = { gender: string; };``` (Error if Person was already defined)
+      type Person = { gender: string; }; (Error if Person was already defined)
 
 4. Usage with Unions and Primitives
 
@@ -52,8 +52,8 @@ Both interfaces and types allow you to define custom shapes for objects, but the
 
 # Type: Can define unions, primitives, and more.
 
-      ```type Status = "active" | "inactive";
-      type Age = number;```
+      type Status = "active" | "inactive";
+      type Age = number;
 
 # When to Use Which?
 
@@ -66,26 +66,26 @@ The keyof keyword is used to get all the keys of an object type as a union of st
 
 - Example: Getting Keys of an Object
 
-           ```interface User {
+           interface User {
            id: number;
            name: string;
            email: string;
-           }```
+           }
 
-  `type UserKeys = keyof User; ("id" | "name" | "email")`
+  type UserKeys = keyof User; ("id" | "name" | "email")
 
 Now, "UserKeys" is a union type containing all the keys of User.
 
 # Practical Use Case: Type-Safe Property Access
 
-      ```function getProperty(obj: User, key: keyof User) {
+      function getProperty(obj: User, key: keyof User) {
       return obj[key];
-      }```
+      }
 
-      ```const user: User = { id: 1, name: "Alice", email: "alice@example.com" };
+      const user: User = { id: 1, name: "Alice", email: "alice@example.com" };
 
       console.log(getProperty(user, "name")); (It will Work.)
-      console.log(getProperty(user, "age")); (It will give Error: "age" is not a valid key)```
+      console.log(getProperty(user, "age")); (It will give Error: "age" is not a valid key)
 
 Here, keyof ensures that only valid keys of User can be passed.
 
