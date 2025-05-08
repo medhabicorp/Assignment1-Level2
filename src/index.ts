@@ -137,8 +137,8 @@ async function squareAsync(n: number): Promise<number> {
 
 // squareAsync(4)
 //   .then(result=>console.log(result))
-//   .catch(error=>console.log(error))
-//        // Output after 1s: 16
+//   .catch(error=>console.log(error)) // Output after 1s: 16
+
 // squareAsync(-3)
 //   .then(result=>console.log(result))
 //   .catch(error=>console.log(error))  // Output: Error: Negative number not allowed
